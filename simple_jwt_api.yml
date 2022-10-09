@@ -39,18 +39,18 @@ spec:
           ports:
             - containerPort: 8080
 ---
-apiVersion: v1
-kind: IAMIdentityMapping
-metadata:
-  name: kubernetes-admin
-spec:
-  # Arn of the User or Role to be allowed to authenticate
-  arn: arn:aws:iam::981315520969:user/myAdmin
-  # Username that Kubernetes will see the user as, this is useful for setting
-  # up allowed specific permissions for different users
-  username: myAdmin
-  # Groups to be attached to your users/roles. For example `system:masters` to
-  # create cluster admin, or `system:nodes`, `system:bootstrappers` for nodes to
-  # access the API server.
-  groups:
-  - system:masters
+#apiVersion: v1
+#kind: IAMIdentityMapping
+#metadata:
+#  name: kubernetes-admin
+#spec:
+#  # Arn of the User or Role to be allowed to authenticate
+#  arn: arn:aws:iam::981315520969:user/myAdmin
+#  # Username that Kubernetes will see the user as, this is useful for setting
+#  # up allowed specific permissions for different users
+#  username: myAdmin
+#  # Groups to be attached to your users/roles. For example `system:masters` to
+#  # create cluster admin, or `system:nodes`, `system:bootstrappers` for nodes to
+#  # access the API server.
+#  groups:
+#  - system:masters

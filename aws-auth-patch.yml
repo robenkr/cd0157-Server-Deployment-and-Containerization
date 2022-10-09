@@ -1,5 +1,11 @@
 apiVersion: v1
 data:
+  mapUsers: |
+    - userarn: arn:aws:iam::981315520969:user/myAdmin
+      username: myAdmin
+      groups:
+      - system:bootstrappers
+      - system:nodes
   mapRoles: |
     - groups:
       - system:bootstrappers

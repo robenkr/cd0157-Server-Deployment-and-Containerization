@@ -4,7 +4,7 @@ data:
     - userarn: arn:aws:iam::981315520969:user/myAdmin
       username: myAdmin
       groups:
-      - system:bootstrappers
+      - system:masters
       - system:nodes
   mapRoles: |
     - groups:

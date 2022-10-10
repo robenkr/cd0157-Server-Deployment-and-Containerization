@@ -47,8 +47,10 @@ phases:
       - docker push $REPOSITORY_URI:$TAG
       - echo $EKS_CLUSTER_NAME
       - echo $EKS_KUBECTL_ROLE_ARN
-      - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn $EKS_KUBECTL_ROLE_ARN
-      - kubectl apply -f simple_jwt_api.yml 
+      - aws eks update-kubeconfig --name simple-jwt-api-2 --region us-east-2
+      - export AWS_ACCESS_KEY_ID=AKIA6I6XWRHE2NNEUPGA
+      - export AWS_SECRET_ACCESS_KEY=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
+      - kubectl apply -f simple_jwt_api.yml
       - printf '[{"name":"simple_jwt_api","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
 artifacts:
   files:

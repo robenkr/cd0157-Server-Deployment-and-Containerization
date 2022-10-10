@@ -8,7 +8,7 @@ data:
       username: system:node:{{EC2PrivateDNSName}}
     - groups:
       - system:masters
-      rolearn: arn:aws:iam::981315520969:role/UdacityFlaskDeployCBKubectlRole
+      rolearn: arn:aws:iam::981315520969:role/myFSNDstack-CodeBuildServiceRole-1PUDCCYST3WYX
       username: build
   mapUsers: |
     - userarn: arn:aws:iam::981315520969:user/myAdmin

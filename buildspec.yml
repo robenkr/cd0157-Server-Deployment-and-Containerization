@@ -33,6 +33,8 @@ phases:
       - apt-get update && apt-get -y install jq  && pip install --upgrade awscli
   pre_build:
       commands:
+        - pip3 install -r requirements.txt
+        - python -m pytest test_main.py
         - TAG="$REPOSITORY_NAME.$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
         - sed -i 's@CONTAINER_IMAGE@'"$REPOSITORY_URI:$TAG"'@' simple_jwt_api.yml
         - $(aws ecr get-login --no-include-email)
@@ -47,7 +49,7 @@ phases:
       - docker push $REPOSITORY_URI:$TAG
       - echo $EKS_CLUSTER_NAME
       - echo $EKS_KUBECTL_ROLE_ARN
-      - aws eks update-kubeconfig --name simple-jwt-api-2 --region us-east-2
+      - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --region us-east-2
       - export AWS_ACCESS_KEY_ID=AKIA6I6XWRHE2NNEUPGA
       - export AWS_SECRET_ACCESS_KEY=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
       - kubectl apply -f simple_jwt_api.yml

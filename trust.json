@@ -4,13 +4,6 @@
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::981315520969:role/myFSNDstack-CodeBuildServiceRole-1PUDCCYST3WYX"
-            },
-            "Action": "sts:AssumeRole"
-        },
-        {
-            "Effect": "Allow",
-            "Principal": {
                 "AWS": "arn:aws:iam::981315520969:root"
             },
             "Action": "sts:AssumeRole"

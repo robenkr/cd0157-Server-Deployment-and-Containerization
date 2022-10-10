@@ -2,14 +2,14 @@ apiVersion: v1
 data:
   mapRoles: |
     - groups:
+      - system:masters
+      rolearn: arn:aws:iam::981315520969:role/UdacityFlaskDeployCBKubectlRole
+      username: build
+    - groups:
       - system:bootstrappers
       - system:nodes
       rolearn: arn:aws:iam::981315520969:role/eksctl-simple-jwt-api-nodegroup-n-NodeInstanceRole-1DBHED9TMYRZZ
       username: system:node:{{EC2PrivateDNSName}}
-    - groups:
-      - system:masters
-      rolearn: arn:aws:iam::981315520969:role/myFSNDstack-CodeBuildServiceRole-1PUDCCYST3WYX
-      username: build
   mapUsers: |
     - userarn: arn:aws:iam::981315520969:user/myAdmin
       username: myAdmin

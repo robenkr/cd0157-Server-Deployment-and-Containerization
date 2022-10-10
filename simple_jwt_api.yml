@@ -1,19 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: simple-jwt-api-2
+  name: simple-jwt-api
 spec:
   type: LoadBalancer
   ports:
     - port: 80
       targetPort: 8080
   selector:
-    app: simple-jwt-api-2
+    app: simple-jwt-api
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-jwt-api-2
+  name: simple-jwt-api
 spec:
   replicas: 3
   strategy:
@@ -23,14 +23,14 @@ spec:
       maxSurge: 2
   selector:
     matchLabels:
-      app: simple-jwt-api-2
+      app: simple-jwt-api
   template:
     metadata:
       labels:
-        app: simple-jwt-api-2
+        app: simple-jwt-api
     spec:
       containers:
-        - name: simple-jwt-api-2
+        - name: simple-jwt-api
           image: CONTAINER_IMAGE
           securityContext:
             privileged: false
@@ -38,19 +38,3 @@ spec:
             allowPrivilegeEscalation: false
           ports:
             - containerPort: 8080
----
-#apiVersion: v1
-#kind: IAMIdentityMapping
-#metadata:
-#  name: kubernetes-admin
-#spec:
-#  # Arn of the User or Role to be allowed to authenticate
-#  arn: arn:aws:iam::981315520969:user/myAdmin
-#  # Username that Kubernetes will see the user as, this is useful for setting
-#  # up allowed specific permissions for different users
-#  username: myAdmin
-#  # Groups to be attached to your users/roles. For example `system:masters` to
-#  # create cluster admin, or `system:nodes`, `system:bootstrappers` for nodes to
-#  # access the API server.
-#  groups:
-#  - system:masters
